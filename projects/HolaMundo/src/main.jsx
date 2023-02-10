@@ -8,8 +8,8 @@ import TwitterCard from './TwitterCard'
 ReactDOM.createRoot(document.getElementById('root')).render(
   
   <React.StrictMode>
-    {/* <App /> */}
-    <HolaMundo />
+    <App />
+    {/* <HolaMundo />
     <TwitterCard 
       name="Emill"
       username="lemito66"
@@ -21,6 +21,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       username="lemito66"
       initialIsFollowing={false}
       
-    />
+    /> */}
   </React.StrictMode>,
 )
