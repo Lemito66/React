@@ -1,4 +1,13 @@
-function TwitterCard ({name, username, isFollowing}){
+import { useState } from "react";
+
+function TwitterCard ({name, username, }){
+
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    const handleClick = () => {
+        setIsFollowing(!isFollowing);
+    }
+
     const imageSrc = `https://unavatar.io/${username}`;
     const isFollowingText = isFollowing ? 'Siguiendo' : 'Seguir';
     return(
@@ -12,7 +21,7 @@ function TwitterCard ({name, username, isFollowing}){
             </header>
 
             <aside>
-                <button>
+                <button onClick={handleClick}>
                     {isFollowingText}
                 </button>
             </aside>
