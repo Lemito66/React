@@ -13,11 +13,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <TwitterCard 
       name="Emill"
       username="lemito66"
+      initialIsFollowing={false}
       
     />
     <TwitterCard 
       name="Emill"
       username="lemito66"
+      initialIsFollowing={false}
       
     />
   </React.StrictMode>,
