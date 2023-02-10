@@ -7,17 +7,24 @@ function TwitterCard({ name, username }) {
   const handleClick = () => {
     setIsFollowing(!isFollowing);
   };
-  const sumarFollowers = () => {
+  const addFollowers = () => {
     setFollowers(followers + 1);
   };
 
-  const restarFollowers = () => {
+  const substractFollowers = () => {
     if (followers <= 0) {
       alert("No puedes tener menos de 0 seguidores");
     } else {
       setFollowers(followers - 1);
     }
   };
+  const restartFollowers = () => {
+    if (followers <= 0) {
+      alert("No puedes tener menos de 0 seguidores");
+    } else {
+        setFollowers(0);
+    }
+  }
 
   const imageSrc = `https://unavatar.io/${username}`;
   const isFollowingText = isFollowing ? "Siguiendo" : "Seguir";
@@ -36,10 +43,13 @@ function TwitterCard({ name, username }) {
         <button onClick={handleClick}>{isFollowingText}</button>
       </aside>
       <aside>
-        <button onClick={sumarFollowers}>{followers}</button>
+        <button onClick={addFollowers}>{followers}</button>
       </aside>
       <aside>
-        <button onClick={restarFollowers}>Restar</button>
+        <button onClick={substractFollowers}>Restar</button>
+      </aside>
+      <aside>
+        <button onClick={restartFollowers}>Reiniciar</button>
       </aside>
     </article>
   );
