@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function TwitterCard({ name, username }) {
-  const [isFollowing, setIsFollowing] = useState(false);
+function TwitterCard({ name, username, initialIsFollowing}) {
+  //Utilizar una prop para inicializar el estado, se lo debe poner initialIs--- 
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [followers, setFollowers] = useState(0);
 
   const handleClick = () => {
