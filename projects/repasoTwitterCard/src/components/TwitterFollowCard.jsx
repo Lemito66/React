@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-export const TwitterFollowCard = ({ user, initialIsFollowing }) => {
+export const TwitterFollowCard = ({ children, user, initialIsFollowing }) => {
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const handleClick = () => setIsFollowing(!isFollowing);
   const text = isFollowing ? "Siguiendo" : "Seguir";
@@ -17,7 +17,7 @@ export const TwitterFollowCard = ({ user, initialIsFollowing }) => {
           src={`https://unavatar.io/${user}`}
         />
         <div className="tw-followCard-info">
-          {/* <strong>{children}</strong> */}
+          <strong>{children}</strong>
           <span className="tw-followCard-infoUserName">@{user}</span>
         </div>
       </header>
@@ -28,6 +28,7 @@ export const TwitterFollowCard = ({ user, initialIsFollowing }) => {
           <span className="tw-followCard-stopFollow">Dejar de seguir</span>
         </button>
       </aside>
+      <br></br>
     </article>
   );
 };
