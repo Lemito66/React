@@ -6,9 +6,18 @@ import { TwitterFollowCard } from "./components/TwitterFollowCard";
 import "../src/styles/App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   const users = [
+    {
+      user: "Lemito66",
+      userName: "Lemito",
+      initialIsFollowing: true,
+    },
+    {
+      user: "Lemito66",
+      userName: "Lemito",
+      initialIsFollowing: true,
+    },
     {
       user: "Lemito66",
       userName: "Lemito",
@@ -17,7 +26,7 @@ function App() {
   ];
 
   return (
-    <section>
+    <section className="App">
       {users.map(({user, initialIsFollowing, userName}) => (
         <TwitterFollowCard
           key={user}
