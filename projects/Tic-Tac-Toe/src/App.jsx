@@ -6,10 +6,19 @@ import { Square } from "./components/Square";
 import confetti from "canvas-confetti";
 import { checkEndGame, getWinner } from "./logic/board";
 import { WinnerModal } from "./components/WinnerModal";
+import {saveToLocalStorage, resetGameStorage} from "./logic/storage";
 
 function App() {
-  const [board, setBoard] = useState(Array(9).fill(null)); // Creo un estado para el board con un arreglo de 9 posiciones
-  const [turn, setTurn] = useState(TURNS.X);
+  const [board, setBoard] = useState(() => {
+    const boardFromLocalStorage = window.localStorage.getItem('board');
+    return boardFromLocalStorage
+      ? JSON.parse(boardFromLocalStorage)
+      : Array(9).fill(null);
+  }); // Creo un estado para el board con un arreglo de 9 posiciones
+  const [turn, setTurn] = useState(() => {
+    const turnFromLocalStorage = window.localStorage.getItem('turn');
+    return turnFromLocalStorage ?? TURNS.X;
+  });
   const [winner, setWinner] = useState(null); // null = no hay ganador, false = empate, X = gano X, O = gano O
 
   const updateBoard = (index) => {
@@ -27,6 +36,9 @@ function App() {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn); // Actualizo el turno
 
+    // guardar partida
+    saveToLocalStorage({ board: newBoard, turn: newTurn });
+
     // Verificar si hay un ganador
     const newWinner = getWinner(newBoard); // Llamo a la funcion getWinner y le paso el nuevo board
     if (newWinner) {
@@ -43,6 +55,8 @@ function App() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
+    // resetear el localStorage
+    resetGameStorage();
   };
 
   return (
