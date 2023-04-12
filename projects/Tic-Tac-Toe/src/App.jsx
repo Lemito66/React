@@ -22,9 +22,9 @@ function App() {
     setBoard(newBoard); // Actualizo el board
 
     // Actualizar el turno
-    // Si el turno es X, el nuevo turno 
+    // Si el turno es X, el nuevo turno
     //es O, si no, es X
-    const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X; 
+    const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn); // Actualizo el turno
 
     // Verificar si hay un ganador
