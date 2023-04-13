@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marcador de dos equipos</title>
+  <style>
+    /* Estilos CSS para dar formato al marcador */
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .team {
+      text-align: center;
+      margin: 0 20px;
+    }
+    
+    .score {
+      font-size: 100px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="team">
+      <h2>Equipo 1</h2>
+      <div class="score">0</div>
+      <button onclick="addPoint('team1')">Punto</button>
+    </div>
+    <div class="team">
+      <h2>Equipo 2</h2>
+      <div class="score">0</div>
+      <button onclick="addPoint('team2')">Punto</button>
+    </div>
+  </div>
+
+  <script>
+    // Función para sumar puntos al equipo correspondiente
+    function addPoint(team) {
+      var scoreEl = document.querySelector("#" + team + " .score");
+      var score = parseInt(scoreEl.textContent);
+      scoreEl.textContent = score + 1;
+    }
+  </script>
+</body>
+</html>
