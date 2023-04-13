@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pointTeamOne, setPointTeamOne] = useState(0);
+  const [pointTeamTwo, setPointTeamTwo] = useState(0);
+  const [changepointOne, setChangepointOne] = useState(false);
+  const [changepointTwo, setChangepointTwo] = useState(false);
+
+  const valueButtonTeamOne = changepointOne ? "Punto" : "Cambio";
+  const valueButtonTeamTwo = changepointTwo ? "Punto" : "Cambio";
+
+  const hancleClicKTeamOne = () => {
+    if (changepointOne) {
+      setPointTeamOne(pointTeamOne + 1);
+      setChangepointOne(true);
+      //changepointOne ? setChangepointOne(false) : setChangepointOne(true);
+    } else {
+      setChangepointOne(true);
+    }
+  };
+  const hancleClicKTeamTwo = () => {
+    if (changepointTwo) {
+      setPointTeamTwo(pointTeamTwo + 1);
+      setChangepointTwo(true);
+      //changepointTwo ? setChangepointTwo(false) : setChangepointTwo(true);
+    } else {
+      setChangepointTwo(true);
+    }
+  };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="team">
+        <h2>Equipo 1</h2>
+        <div className="score">{pointTeamOne}</div>
+        <button onClick={hancleClicKTeamOne}>{valueButtonTeamOne}</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="team">
+        <h2>Equipo 2</h2>
+        <div className="score">{pointTeamTwo}</div>
+        <button onClick={hancleClicKTeamTwo}>{valueButtonTeamTwo}</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
